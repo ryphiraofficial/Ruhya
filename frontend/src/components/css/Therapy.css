@@ -1,0 +1,93 @@
+.therapy {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.therapy-header h2 {
+    font-family: var(--font-accent);
+    font-size: 3.5rem;
+    color: #2b6534;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.intro-text {
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    color: #3b2840;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.needs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+}
+
+.need-item {
+    background: #fafcfa;
+    padding: 20px 30px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    font-size: 1.05rem;
+    color: #3b2840;
+    border: 1px solid #ebf0ec;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #2b6534;
+    flex-shrink: 0;
+}
+
+.footer-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #1a4d25;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .therapy {
+        padding: 60px 20px;
+    }
+
+    .therapy-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .needs-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+
+    .need-item {
+        padding: 15px 20px;
+        font-size: 0.95rem;
+    }
+
+    .footer-text {
+        font-size: 1.1rem;
+    }
+}

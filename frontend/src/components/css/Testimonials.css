@@ -1,0 +1,226 @@
+.testimonials-section {
+    padding: 96px 0;
+    background-color: white;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.testimonials-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.testimonials-title {
+    font-family: 'bold', var(--font-serif);
+    font-size: clamp(36px, 5vw, 52px);
+    color: #245e2f;
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.testimonials-subtitle {
+    font-family: 'Poppins', var(--font-main);
+    font-size: clamp(16px, 2vw, 20px);
+    color: rgba(41, 15, 57, 0.7);
+    text-align: center;
+    margin-bottom: 64px;
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.testimonials-slider {
+    max-width: 1152px;
+    margin: 0 auto;
+}
+
+.testimonial-card-wrapper {
+    padding: 0 12px;
+}
+
+.testimonial-card {
+    background: linear-gradient(to bottom right, #ffffff, #f9fdf9);
+    padding: 24px;
+    border-radius: 40px;
+    border: 2px solid rgba(36, 94, 47, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .testimonial-card {
+        padding: 32px;
+    }
+}
+
+.testi-img-container {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.testi-img-inner {
+    position: relative;
+    display: inline-block;
+}
+
+.testi-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 4px rgba(36, 94, 47, 0.1);
+}
+
+.testi-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testi-quote-badge {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    background-color: #245e2f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testi-quote-badge svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+}
+
+.testi-quote-text {
+    font-family: 'Poppins', var(--font-main);
+    font-size: 15px;
+    color: rgba(41, 15, 57, 0.8);
+    line-height: 1.625;
+    margin-bottom: 24px;
+    font-style: italic;
+    text-align: center;
+    min-height: 140px;
+}
+
+@media (min-width: 768px) {
+    .testi-quote-text {
+        font-size: 16px;
+    }
+}
+
+.testi-author-info {
+    border-top: 1px solid rgba(36, 94, 47, 0.1);
+    padding-top: 16px;
+    text-align: center;
+}
+
+.testi-author-name {
+    font-family: 'Poppins', var(--font-main);
+    font-weight: 500;
+    font-size: 16px;
+    color: #290f39;
+    margin-bottom: 4px;
+}
+
+.testi-author-service {
+    font-family: 'Poppins', var(--font-main);
+    font-size: 14px;
+    color: #245e2f;
+    margin-bottom: 0px;
+}
+
+
+/* Custom slick slider styles from reference code */
+.testimonials-slider .slick-dots {
+    bottom: -50px;
+}
+
+.testimonials-slider .slick-dots li button:before {
+    font-size: 12px;
+    color: #245e2f;
+    opacity: 0.3;
+}
+
+.testimonials-slider .slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: #245e2f;
+}
+
+.testimonials-slider .slick-arrow {
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+
+.testimonials-slider .slick-arrow:before {
+    font-size: 40px;
+    color: #245e2f;
+    opacity: 0.5;
+}
+
+.testimonials-slider .slick-arrow:hover:before {
+    opacity: 1;
+}
+
+.testimonials-slider .slick-prev {
+    left: -50px;
+}
+
+.testimonials-slider .slick-next {
+    right: -50px;
+}
+
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 60px 0;
+    }
+
+    .testimonials-title {
+        font-size: 2.2rem;
+    }
+
+    .testimonials-subtitle {
+        margin-bottom: 40px;
+    }
+
+    .testimonial-card {
+        border-radius: 30px;
+    }
+
+    .testimonials-slider .slick-prev {
+        left: 0;
+    }
+
+    .testimonials-slider .slick-next {
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .testi-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .testi-quote-text {
+        font-size: 0.9rem;
+        min-height: auto;
+    }
+
+    .testi-author-name {
+        font-size: 0.95rem;
+    }
+
+    .testi-author-service {
+        font-size: 0.8rem;
+    }
+}
