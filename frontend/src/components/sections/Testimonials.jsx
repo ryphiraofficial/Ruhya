@@ -95,7 +95,7 @@ const Testimonials = () => {
         dots: true,
         infinite: testimonials.length > 1,
         speed: 600,
-        slidesToShow: Math.min(testimonials.length, 3),
+        slidesToShow: 3, // Default to desktop view
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 5000,
@@ -105,16 +105,16 @@ const Testimonials = () => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: Math.min(testimonials.length, 2),
+                    slidesToShow: 2,
                     slidesToScroll: 1,
-                    infinite: testimonials.length > 1,
+                    infinite: true,
                     dots: true
                 }
             },
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 1, // Correctly show 1 slide on mobile
                     slidesToScroll: 1,
                     arrows: false,
                     dots: true
@@ -143,7 +143,7 @@ const Testimonials = () => {
 
                 <SectionReveal delay={0.3}>
                     <div className="testimonials-slider">
-                        <Slider {...sliderSettings}>
+                        <Slider key={testimonials.length} {...sliderSettings}>
                             {testimonials.map((testimonial) => (
                                 <div key={testimonial.id}>
                                     <div className="testimonial-card-wrapper">
