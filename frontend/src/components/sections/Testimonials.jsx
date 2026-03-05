@@ -11,7 +11,7 @@ import imgRectangle19 from "../../assets/1674709d7e2e3706185e5699932ba4a2ee107b4
 
 import { BASE_URL } from '../../config/api';
 
-// const defaultTestimonials = [
+const defaultTestimonials = [
 //     {
 //         id: 1,
 //         name: 'Amritha',
@@ -40,7 +40,7 @@ import { BASE_URL } from '../../config/api';
 //         text: 'Add more testimonials as you receive them. Each testimonial helps build trust with potential clients and showcases the transformative power of your healing work.',
 //         service: 'Reiki & Energy Healing'
 //     }
-// ];
+];
 
 // Section Reveal Animation Component
 function SectionReveal({ children, delay = 0 }) {
