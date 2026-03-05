@@ -36,7 +36,7 @@ const Journey = () => {
                     </p>
                 </SectionReveal>
 
-                <SectionReveal delay={0.4}>
+                {/* <SectionReveal delay={0.4}>
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -45,7 +45,7 @@ const Journey = () => {
                     >
                         Get In Touch
                     </motion.button>
-                </SectionReveal>
+                </SectionReveal> */}
             </div>
         </section>
     );
