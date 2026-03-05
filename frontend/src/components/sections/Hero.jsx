@@ -5,6 +5,7 @@ import '../css/Hero.css';
 import heroBg from '../../assets/85eeba3b6f9eb5b8266530642de43f06c2a5fe2e.png';
 import ContactModal from './ContactModal';
 import { useSettings } from '../../context/SettingsContext';
+import logo from '../../assets/ruhya final logo-01.svg';
 
 const Hero = () => {
     const { phoneNumber } = useSettings();
@@ -71,18 +72,7 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <div className="logo-leaf">
-                        <svg viewBox="0 0 100 100" className="leaf-svg">
-                            <path d="M50 10 C30 30 20 60 50 90 C80 60 70 30 50 10 Z" fill="none" stroke="#4a5d4e" strokeWidth="2" />
-                            <path d="M50 10 L50 90" fill="none" stroke="#4a5d4e" strokeWidth="1" opacity="0.5" />
-                            <path d="M50 30 Q35 40 25 60" fill="none" stroke="#4a5d4e" strokeWidth="0.5" opacity="0.3" />
-                            <path d="M50 30 Q65 40 75 60" fill="none" stroke="#4a5d4e" strokeWidth="0.5" opacity="0.3" />
-                            <path d="M50 50 Q30 60 20 80" fill="none" stroke="#4a5d4e" strokeWidth="0.5" opacity="0.3" />
-                            <path d="M50 50 Q70 60 80 80" fill="none" stroke="#4a5d4e" strokeWidth="0.5" opacity="0.3" />
-                        </svg>
-                    </div>
-                    <h1 className="logo-text">Ruh'ya</h1>
-                    <p className="logo-tagline">BREATH OF LIFE</p>
+                    <img src={logo} alt="Ruh'ya Logo" className="hero-logo" />
                 </motion.div>
 
                 <motion.div
