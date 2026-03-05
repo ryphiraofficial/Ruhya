@@ -11,36 +11,36 @@ import imgRectangle19 from "../../assets/1674709d7e2e3706185e5699932ba4a2ee107b4
 
 import { BASE_URL } from '../../config/api';
 
-const defaultTestimonials = [
-    {
-        id: 1,
-        name: 'Amritha',
-        image: imgRectangle18,
-        text: 'Replace this with actual client testimonial. Share their transformation story, what they appreciated about your work, and how the healing sessions impacted their life. Keep it authentic and heartfelt.',
-        service: 'Inner Child Healing'
-    },
-    {
-        id: 2,
-        name: 'Midhun',
-        image: imgRectangle17,
-        text: 'Replace this with actual client testimonial. Share their transformation story, what they appreciated about your work, and how the healing sessions impacted their life. Keep it authentic and heartfelt.',
-        service: 'Family Constellation Therapy'
-    },
-    {
-        id: 3,
-        name: 'Roopa',
-        image: imgRectangle19,
-        text: 'Replace this with actual client testimonial. Share their transformation story, what they appreciated about your work, and how the healing sessions impacted their life. Keep it authentic and heartfelt.',
-        service: 'Holistic Healing Sessions'
-    },
-    {
-        id: 4,
-        name: 'Aiswarya',
-        image: imgRectangle18,
-        text: 'Add more testimonials as you receive them. Each testimonial helps build trust with potential clients and showcases the transformative power of your healing work.',
-        service: 'Reiki & Energy Healing'
-    }
-];
+// const defaultTestimonials = [
+//     {
+//         id: 1,
+//         name: 'Amritha',
+//         image: imgRectangle18,
+//         text: 'Replace this with actual client testimonial. Share their transformation story, what they appreciated about your work, and how the healing sessions impacted their life. Keep it authentic and heartfelt.',
+//         service: 'Inner Child Healing'
+//     },
+//     {
+//         id: 2,
+//         name: 'Midhun',
+//         image: imgRectangle17,
+//         text: 'Replace this with actual client testimonial. Share their transformation story, what they appreciated about your work, and how the healing sessions impacted their life. Keep it authentic and heartfelt.',
+//         service: 'Family Constellation Therapy'
+//     },
+//     {
+//         id: 3,
+//         name: 'Roopa',
+//         image: imgRectangle19,
+//         text: 'Replace this with actual client testimonial. Share their transformation story, what they appreciated about your work, and how the healing sessions impacted their life. Keep it authentic and heartfelt.',
+//         service: 'Holistic Healing Sessions'
+//     },
+//     {
+//         id: 4,
+//         name: 'Aiswarya',
+//         image: imgRectangle18,
+//         text: 'Add more testimonials as you receive them. Each testimonial helps build trust with potential clients and showcases the transformative power of your healing work.',
+//         service: 'Reiki & Energy Healing'
+//     }
+// ];
 
 // Section Reveal Animation Component
 function SectionReveal({ children, delay = 0 }) {
