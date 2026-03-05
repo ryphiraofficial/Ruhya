@@ -108,7 +108,7 @@
     margin-bottom: 24px;
     font-style: italic;
     text-align: center;
-    min-height: 140px;
+    min-height: 120px;
 }
 
 @media (min-width: 768px) {
@@ -184,43 +184,81 @@
         padding: 60px 0;
     }
 
+    .testimonials-container {
+        padding: 0 12px;
+    }
+
     .testimonials-title {
         font-size: 2.2rem;
+        margin-bottom: 12px;
     }
 
     .testimonials-subtitle {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .testimonial-card-wrapper {
+        padding: 0 8px;
     }
 
     .testimonial-card {
+        padding: 24px 16px;
         border-radius: 30px;
     }
 
     .testimonials-slider .slick-prev {
-        left: 0;
+        left: 5px;
+        z-index: 2;
     }
 
     .testimonials-slider .slick-next {
-        right: 0;
+        right: 5px;
+        z-index: 2;
     }
 }
 
 @media (max-width: 480px) {
+    .testimonials-section {
+        padding: 40px 0;
+    }
+
+    .testimonial-card-wrapper {
+        padding: 0 5px;
+        /* Minimal padding for sliver thin phones */
+    }
+
+    .testimonial-card {
+        padding: 20px 12px;
+        border-radius: 20px;
+    }
+
     .testi-avatar {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     .testi-quote-text {
-        font-size: 0.9rem;
+        font-size: 13px;
+        line-height: 1.4;
         min-height: auto;
+        margin-bottom: 15px;
     }
 
     .testi-author-name {
-        font-size: 0.95rem;
+        font-size: 14px;
     }
 
     .testi-author-service {
-        font-size: 0.8rem;
+        font-size: 12px;
+    }
+
+    .testi-img-container {
+        margin-bottom: 12px;
+    }
+
+    .testi-quote-badge {
+        width: 24px;
+        height: 24px;
     }
 }
