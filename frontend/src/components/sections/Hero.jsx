@@ -5,7 +5,7 @@ import '../css/Hero.css';
 import heroBg from '../../assets/85eeba3b6f9eb5b8266530642de43f06c2a5fe2e.png';
 import ContactModal from './ContactModal';
 import { useSettings } from '../../context/SettingsContext';
-import logo from '../../assets/ruhya_final_logo-01.svg';
+import logo from '../../assets/ruhya_final_logo-01-CjittCSi.svg';
 
 const Hero = () => {
     const { phoneNumber } = useSettings();
