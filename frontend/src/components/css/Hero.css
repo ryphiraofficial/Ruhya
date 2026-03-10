@@ -118,7 +118,7 @@
 }
 
 .logo-container {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -127,9 +127,9 @@
 }
 
 .hero-logo {
-    height: 250px;
+    height: 230px;
     width: auto;
-    max-width: 100%;
+    max-width: 90%;
     object-fit: contain;
     opacity: 0.9;
     filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
@@ -257,45 +257,67 @@
     transform: translateX(-50%);
 }
 
-@media (max-width: 768px) {
-    .hero-logo {
-        height: 800px;
-        width: 80%;
-        /* Increased size */
-    }
-
-    .hero-content {
-        margin-top: -300px;
-    }
-
-    .hero-title-container {
-        margin-top: -320px;
-        /* Pull text HIGHER onto the leaf */
-    }
-
+@media (max-width: 1024px) {
     .hero-title {
-        font-size: 3.5rem;
+        font-size: 6.5rem;
     }
 
     .hero-subtitle {
-        font-size: 1.4rem;
+        font-size: 2.2rem;
+    }
+
+    .hero-logo {
+        height: 180px;
+    }
+
+    .action-pill {
+        min-width: unset;
+        width: auto;
+        gap: 30px;
+        padding: 10px 10px 10px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-logo {
+        height: 140px;
+    }
+
+    .hero-content {
+        margin-top: -40px;
+    }
+
+    .hero-title-container {
+        margin-top: -20px;
+    }
+
+    .hero-title {
+        font-size: 4.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.6rem;
         margin-bottom: 20px;
     }
 
     .hero-description {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         margin-bottom: 30px;
-        padding: 0 10px;
+        padding: 0 15px;
+    }
+
+    .hero-actions {
+        position: relative;
+        z-index: 50;
     }
 
     .action-pill {
         flex-direction: row;
-        padding: 5px;
+        padding: 6px;
         border-radius: 100px;
         width: auto;
         min-width: unset;
-        max-width: 95vw;
-        gap: 8px;
+        gap: 12px;
         margin: 0 auto;
     }
 
@@ -304,26 +326,44 @@
     }
 
     .phone-btn {
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         padding: 0;
         border-radius: 50%;
-    }
-
-    .whatsapp-btn {
-        width: 40px;
-        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .connect-btn {
         width: auto;
-        padding: 10px 20px;
-        font-size: 0.85rem;
+        padding: 12px 25px;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2.8rem;
+        font-size: 3.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-logo {
+        height: 120px;
+    }
+
+    .hero-content {
+        margin-top: -20px;
+    }
+
+    .hero-title-container {
+        margin-top: -15px;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
     }
 }
