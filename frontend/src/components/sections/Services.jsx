@@ -12,12 +12,6 @@ import { BASE_URL } from '../../config/api';
 
 const defaultServices = [
     {
-        id: 'family-constellation',
-        title: 'Family Constellation Therapy',
-        subtitle: 'Ancestral Healing',
-        image: service1
-    },
-    {
         id: 'inner-child-healing',
         title: 'Inner Child Healing',
         subtitle: 'Emotional Restoration',
@@ -34,8 +28,31 @@ const defaultServices = [
         title: 'Holistic Integrated Creative Arts Therapy',
         subtitle: 'Personalized Healing',
         image: service4
+    },
+    {
+        id: 'family-constellation',
+        title: 'Family Constellation Therapy',
+        subtitle: 'Ancestral Healing',
+        image: service1
     }
 ];
+
+// Desired display order for services
+const desiredOrder = [
+    'Inner Child Healing',
+    'Transpersonal Hypnotherapy',
+    'Holistic Integrated Creative Arts Therapy',
+    'Family Constellation Therapy'
+];
+
+// Map keywords to their fallback images for reliable matching
+const imageFallbackMap = {
+    'inner child': service2,
+    'transpersonal': service3,
+    'holistic': service4,
+    'family constellation': service1,
+    'constellation': service1
+};
 
 const Services = () => {
     const [services, setServices] = useState(defaultServices);
@@ -50,13 +67,34 @@ const Services = () => {
                 if (response.ok) {
                     const data = await response.json();
                     if (data && data.length > 0) {
-                        const mappedServices = data.map((service, index) => ({
-                            id: service._id,
-                            title: service.title,
-                            subtitle: service.subtitle,
-                            description: service.description,
-                            image: service.imageUrl ? `${BASE_URL}${service.imageUrl}` : defaultServices[index]?.image || defaultServices[0].image
-                        }));
+                        const mappedServices = data.map((service) => {
+                            // Find fallback image by matching keywords in title
+                            const titleLower = service.title.toLowerCase();
+                            let fallbackImage = defaultServices[0].image;
+                            for (const [keyword, img] of Object.entries(imageFallbackMap)) {
+                                if (titleLower.includes(keyword)) {
+                                    fallbackImage = img;
+                                    break;
+                                }
+                            }
+
+                            return {
+                                id: service._id,
+                                title: service.title,
+                                subtitle: service.subtitle,
+                                description: service.description,
+                                fallbackImage: fallbackImage,
+                                image: service.imageUrl ? `${BASE_URL}${service.imageUrl}` : fallbackImage
+                            };
+                        });
+
+                        // Sort by desired order
+                        mappedServices.sort((a, b) => {
+                            const indexA = desiredOrder.findIndex(t => a.title.toLowerCase().includes(t.toLowerCase().split(' ')[0].toLowerCase()));
+                            const indexB = desiredOrder.findIndex(t => b.title.toLowerCase().includes(t.toLowerCase().split(' ')[0].toLowerCase()));
+                            return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB);
+                        });
+
                         setServices(mappedServices);
                     }
                 }
@@ -99,7 +137,7 @@ const Services = () => {
                         style={{ cursor: 'pointer' }}
                     >
                         <div className="oval-image-container">
-                            <img src={service.image} alt={service.title} />
+                            <img src={service.image} alt={service.title} onError={(e) => { if (service.fallbackImage) e.target.src = service.fallbackImage; }} />
                         </div>
                         <h3>{service.title}</h3>
                         <p>{service.subtitle}</p>
