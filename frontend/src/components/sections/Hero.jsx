@@ -117,7 +117,7 @@ const Hero = () => {
                     <div className="action-pill">
                         <div className="contact-group">
                             <motion.a
-                                href={`tel:${phoneNumber.replace(/\s+/g, '')}`}
+                                href={`tel:${phoneNumber.replace(/[^\d+]/g, '')}`}
                                 className="phone-btn"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
