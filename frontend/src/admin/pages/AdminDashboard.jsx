@@ -913,9 +913,9 @@ const AdminDashboard = () => {
 
                             <div className="preview-header" style={{ marginTop: '40px' }}>
                                 <h3>Manage Needs List</h3>
-                                <button className="cms-add-btn" onClick={() => { setEditingNeed(null); setNeedForm({text: ''}); }}>
+                                {/* <button className="cms-add-btn" onClick={() => { setEditingNeed(null); setNeedForm({text: ''}); }}>
                                     <Plus size={16} /> Add Need
-                                </button>
+                                </button> */}
                             </div>
 
                             {(editingNeed !== null || needForm.text !== '') && (
