@@ -18,7 +18,7 @@ import serviceImg2 from '../../assets/50890a46240fc48c66bf9036bd63303afee0193c.p
 import serviceImg3 from '../../assets/9e717de9d8db97563969ee01cf0d50526433651d.png';
 import serviceImg4 from '../../assets/1674709d7e2e3706185e5699932ba4a2ee107b43.png';
 
-const BACKEND_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+const BACKEND_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'https://ruhya-backend.onrender.com';
 const DEFAULT_SERVICE_IMAGES = [serviceImg1, serviceImg2, serviceImg3, serviceImg4];
 const DEFAULT_ABOUT_IMAGE = imgProfile;
 
