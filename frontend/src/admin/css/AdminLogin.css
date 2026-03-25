@@ -1,0 +1,106 @@
+.admin-login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #111510 0%, #245e2f 100%);
+    padding: 20px;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-logo {
+    font-family: var(--font-logo);
+    font-size: 3rem;
+    color: #3b2840;
+    margin: 0;
+}
+
+.login-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: #4a5d4e;
+    font-weight: 600;
+    margin-top: -5px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.error-message {
+    background: #fff1f1;
+    color: #d32f2f;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    border-left: 4px solid #d32f2f;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #290f39;
+    margin-left: 4px;
+}
+
+.form-group input {
+    padding: 14px 20px;
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+    background: #fdfdfd;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #245e2f;
+    box-shadow: 0 0 0 4px rgba(36, 94, 47, 0.1);
+}
+
+.login-btn {
+    margin-top: 10px;
+    padding: 16px;
+    border-radius: 15px;
+    border: none;
+    background: #245e2f;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #1d4a25;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(36, 94, 47, 0.2);
+}
+
+.login-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}

@@ -1,0 +1,65 @@
+.admin-navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.admin-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-brand {
+    font-family: var(--font-logo);
+    font-size: 1.8rem;
+    color: #245e2f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.admin-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555555;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #245e2f;
+}
+
+.admin-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d32f2f;
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.admin-logout-btn:hover {
+    background: #fff1f1;
+}
