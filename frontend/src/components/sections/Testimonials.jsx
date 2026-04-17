@@ -93,12 +93,11 @@ const Testimonials = () => {
 
     const sliderSettings = {
         dots: true,
-        infinite: testimonials.length > 1,
+        infinite: false, // Stopped infinite loop to make manual navigation clearer
         speed: 600,
         slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: testimonials.length > 1,
-        autoplaySpeed: 5000,
+        autoplay: false, // Removed auto scrolling as requested
         pauseOnHover: true,
         arrows: true,
         responsive: [
@@ -114,7 +113,6 @@ const Testimonials = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    autoplaySpeed: 2500,
                 }
             }
         ],

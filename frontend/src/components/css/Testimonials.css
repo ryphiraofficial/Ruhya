@@ -35,7 +35,8 @@
     width: 100%;
     max-width: 1152px;
     margin: 0 auto;
-    overflow: hidden;
+    /* Removed overflow: hidden to prevent clipping of the navigation buttons */
+    position: relative;
 }
 
 .testimonial-card-wrapper {
@@ -201,11 +202,13 @@
 }
 
 .testimonials-slider .slick-prev {
-    left: -60px;
+    left: 10px;
+    z-index: 20;
 }
 
 .testimonials-slider .slick-next {
-    right: -60px;
+    right: 10px;
+    z-index: 20;
 }
 
 @media (max-width: 768px) {
