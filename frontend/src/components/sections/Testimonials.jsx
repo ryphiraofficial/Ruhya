@@ -93,12 +93,12 @@ const Testimonials = () => {
 
     const sliderSettings = {
         dots: true,
-        infinite: testimonials.length > 1,
+        infinite: testimonials.length > 3,
         speed: 600,
-        slidesToShow: 3, // Default to 3 for desktop
+        slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 5000, // Regular speed for desktop
+        autoplay: testimonials.length > 3,
+        autoplaySpeed: 5000,
         pauseOnHover: true,
         arrows: true,
         responsive: [
@@ -107,6 +107,8 @@ const Testimonials = () => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
+                    infinite: testimonials.length > 2,
+                    autoplay: testimonials.length > 2,
                 }
             },
             {
@@ -114,7 +116,9 @@ const Testimonials = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    autoplaySpeed: 2500, // Faster scroll for mobile focus as requested
+                    infinite: testimonials.length > 1,
+                    autoplay: true,
+                    autoplaySpeed: 2500,
                 }
             }
         ],
