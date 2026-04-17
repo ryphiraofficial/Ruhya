@@ -43,13 +43,14 @@
 }
 
 .testimonial-card {
-    background: linear-gradient(to bottom right, #ffffff, #f9fdf9);
-    padding: 24px;
-    border-radius: 40px;
-    border: 2px solid rgba(36, 94, 47, 0.2);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 32px;
+    border: 2px solid rgba(36, 94, 47, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
+    align-items: center;
     word-break: break-word;
     overflow-wrap: break-word;
     overflow: hidden;
@@ -58,14 +59,12 @@
 
 @media (min-width: 768px) {
     .testimonial-card {
-        padding: 32px;
+        padding: 40px 25px;
     }
 }
 
 .testi-img-container {
-    margin-bottom: 24px;
-    display: flex;
-    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .testi-img-inner {
@@ -74,11 +73,11 @@
 }
 
 .testi-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 140px;
+    height: 160px;
+    border-radius: 100px 100px 0 0;
     overflow: hidden;
-    box-shadow: 0 0 0 4px rgba(36, 94, 47, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .testi-avatar img {
@@ -88,33 +87,18 @@
 }
 
 .testi-quote-badge {
-    position: absolute;
-    bottom: -8px;
-    right: -8px;
-    width: 32px;
-    height: 32px;
-    background-color: #245e2f;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.testi-quote-badge svg {
-    width: 16px;
-    height: 16px;
-    color: white;
+    display: none; /* Hidden for premium SaaS theme */
 }
 
 .testi-quote-text {
     font-family: 'Poppins', var(--font-main);
+    color: #666666;
     font-size: 15px;
-    color: rgba(41, 15, 57, 0.8);
     line-height: 1.625;
     margin-bottom: 24px;
     font-style: italic;
     text-align: center;
-    min-height: 120px;
+    min-height: auto;
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
@@ -124,38 +108,50 @@
 @media (min-width: 768px) {
     .testi-quote-text {
         font-size: 16px;
+        -webkit-line-clamp: 4; /* Shorter for desktop rows */
     }
 }
 
 .testi-author-info {
-    border-top: 1px solid rgba(36, 94, 47, 0.1);
-    padding-top: 16px;
-    text-align: center;
+    border-top: none;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .testi-author-name {
     font-family: 'Poppins', var(--font-main);
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 20px;
     color: #290f39;
     margin-bottom: 4px;
+    text-align: center;
 }
 
 .testi-author-service {
-    font-family: 'Poppins', var(--font-main);
-    font-size: 14px;
-    color: #245e2f;
-    margin-bottom: 0px;
+    order: -1; /* Displayed above name as a badge */
+    background: #0066ff;
+    color: white !important;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px !important;
+    letter-spacing: 0.5px;
 }
 
 .testi-mobile-cta {
-    display: none;
+    display: block; /* Shown on all devices in this new theme */
     text-align: center;
     color: #f59e0b;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
-    margin-top: 15px;
+    margin-top: 10px;
     cursor: pointer;
     text-transform: uppercase;
 }
@@ -215,119 +211,25 @@
 @media (max-width: 768px) {
     .testimonials-section {
         padding: 60px 0;
-        background-color: #ffffff;
-    }
-
-    .testimonials-title {
-        font-size: 2.2rem;
-        margin-bottom: 12px;
-        color: #245e2f;
-    }
-
-    .testimonials-subtitle {
-        margin-bottom: 30px;
-        padding: 0 10px;
-        color: rgba(41, 15, 57, 0.7);
     }
 
     .testimonial-card-wrapper {
         padding: 0 4px;
-        width: 100%;
-        display: block;
-        box-sizing: border-box;
     }
 
     .testimonial-card {
-        background: #ffffff;
         padding: 30px 15px;
-        border-radius: 32px;
-        border: 2px solid rgba(36, 94, 47, 0.1); /* Subtle green border styling matching desktop */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Lighter shadow */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 0;
-    }
-
-    .testi-img-container {
-        order: 1;
-        margin-bottom: 20px;
-    }
-
-    .testi-avatar {
-        width: 140px;
-        height: 160px;
-        border-radius: 100px 100px 0 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .testi-quote-badge {
-        display: none;
-    }
-
-    .testi-author-info {
-        order: 2;
-        border-top: none;
-        padding-top: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 15px;
-    }
-
-    .testi-author-service {
-        order: -1;
-        background: #0066ff;
-        color: white !important;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        padding: 6px 14px;
-        border-radius: 50px;
-        margin-bottom: 15px !important;
-        letter-spacing: 0.5px;
-    }
-
-    .testi-author-name {
-        color: #290f39; /* Dark font for name */
-        font-size: 22px;
-        margin-bottom: 12px;
-        font-weight: 600;
-    }
-
-    .testi-quote-text {
-        order: 3;
-        color: #666666; /* Gray font for quote */
-        font-size: 15px;
-        line-height: 1.6;
-        font-style: italic; /* Adding italic back for a nice quote look */
-        margin-bottom: 10px;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        min-height: auto;
-    }
-
-    .testi-mobile-cta {
-        display: block;
-        order: 4;
     }
 
     .testimonials-slider .slick-arrow {
         width: 40px;
         height: 40px;
-        background: #245e2f; /* Dark green background for arrow button to stand out on white */
-        border-radius: 50%;
-        z-index: 5;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        background: #245e2f; /* Dark green for visibility on mobile white background */
     }
 
     .testimonials-slider .slick-arrow:before {
-        color: #ffffff; /* White arrow icon */
+        color: #ffffff;
         font-size: 20px;
-        opacity: 1;
     }
 
     .testimonials-slider .slick-prev {
@@ -338,16 +240,6 @@
     .testimonials-slider .slick-next {
         right: 10px;
         z-index: 20;
-    }
-
-    .testimonials-slider .slick-dots li button:before {
-        color: #245e2f;
-        opacity: 0.3;
-    }
-
-    .testimonials-slider .slick-dots li.slick-active button:before {
-        opacity: 1;
-        color: #245e2f;
     }
 }
 

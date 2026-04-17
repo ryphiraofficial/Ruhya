@@ -93,11 +93,11 @@ const Testimonials = () => {
 
     const sliderSettings = {
         dots: true,
-        infinite: testimonials.length > 3,
+        infinite: testimonials.length > 1,
         speed: 600,
         slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: testimonials.length > 3,
+        autoplay: testimonials.length > 1,
         autoplaySpeed: 5000,
         pauseOnHover: true,
         arrows: true,
@@ -107,8 +107,6 @@ const Testimonials = () => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    infinite: testimonials.length > 2,
-                    autoplay: testimonials.length > 2,
                 }
             },
             {
@@ -116,8 +114,6 @@ const Testimonials = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    infinite: testimonials.length > 1,
-                    autoplay: true,
                     autoplaySpeed: 2500,
                 }
             }
@@ -180,11 +176,6 @@ const Testimonials = () => {
                                                 <p className="testi-author-service">
                                                     {testimonial.service}
                                                 </p>
-                                            </div>
-
-                                            {/* Mobile CTA Link */}
-                                            <div className="testi-mobile-cta">
-                                                LEARN MORE &rarr;
                                             </div>
                                         </div>
                                     </div>
