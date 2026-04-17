@@ -393,6 +393,10 @@
     border-radius: 25px;
     padding: 25px;
     border: 1px solid #eef2f0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 .testi-card-top {
@@ -1099,4 +1103,4 @@
     font-weight: bold;
     letter-spacing: -1px;
 }
-
+
