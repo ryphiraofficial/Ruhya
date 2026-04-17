@@ -1,0 +1,224 @@
+.edit-section-page {
+    min-height: 100vh;
+    background-color: #f4f7f5;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.edit-header {
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+    color: #245e2f;
+}
+
+.edit-header h1 {
+    font-size: 2.2rem;
+    color: #290f39;
+    margin: 0;
+}
+
+.edit-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.edit-form {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.status-message {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.status-message.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-message.error {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.status-message.info {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.fields-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+}
+
+@media (max-width: 768px) {
+    .fields-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label,
+.image-field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #290f39;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 14px 20px;
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+    background: #fdfdfd;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #245e2f;
+}
+
+.image-preview-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.image-preview {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid #eee;
+}
+
+.no-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #f9f9f9;
+    border: 2px dashed #e0e0e0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    background: #f0f4f1;
+    color: #245e2f;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.upload-label:hover {
+    background: #e1e9e2;
+}
+
+.form-actions {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 16px;
+    background: #245e2f;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #1d4a25;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(36, 94, 47, 0.1);
+}
+
+.save-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.reset-btn {
+    padding: 16px;
+    background: #fff;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #fff5f5;
+    color: #c62828;
+    border-color: #ffcdd2;
+}
+
+.reset-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

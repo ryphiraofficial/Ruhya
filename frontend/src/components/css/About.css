@@ -1,0 +1,148 @@
+.about {
+    padding: 96px 0;
+    background: linear-gradient(to bottom, #ffffff, #f9fdf9);
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.about-container {
+    max-width: 896px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.about-heading {
+    font-family: var(--font-accent);
+    font-size: clamp(36px, 5vw, 56px);
+    color: #245e2f;
+    line-height: 1.1;
+    text-align: center;
+    font-weight: 400;
+}
+
+.about-image-wrapper {
+    position: relative;
+    border-radius: 50%;
+}
+
+.about-image {
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: 50%;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(36, 94, 47, 0.1), transparent);
+    border-radius: 50%;
+}
+
+.about-decorative-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 4px solid rgba(36, 94, 47, 0.2);
+}
+
+.about-subheading {
+    font-family: var(--font-accent);
+    font-size: 32px;
+    color: #290f39;
+    text-align: center;
+    font-weight: 400;
+}
+
+.about-bio {
+    font-family: 'Poppins', var(--font-main);
+    font-size: 18px;
+    color: rgba(41, 15, 57, 0.8);
+    line-height: 1.625;
+    text-align: justify;
+    max-width: 768px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.about-bio-inner-box {
+    padding-top: 16px;
+}
+
+.bio-quote-title {
+    font-family: var(--font-main);
+    color: #245e2f;
+    font-size: 24px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.bio-quote-subtitle {
+    text-align: center;
+    font-style: italic;
+}
+
+.bio-quote-text {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.bio-footer-text {
+    font-weight: 500;
+    color: #245e2f;
+    text-align: center;
+    padding-top: 16px;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 60px 0;
+    }
+
+    .about-heading {
+        font-size: 2.5rem;
+    }
+
+    .about-image {
+        width: 260px;
+        height: 260px;
+    }
+
+    .about-subheading {
+        font-size: 1.5rem;
+    }
+
+    .about-bio {
+        font-size: 1rem;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .bio-quote-title {
+        font-size: 1.3rem;
+    }
+
+    .bio-footer-text {
+        font-size: 1.1rem;
+    }
+}
