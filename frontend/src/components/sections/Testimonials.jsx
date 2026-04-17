@@ -93,34 +93,29 @@ const Testimonials = () => {
 
     const sliderSettings = {
         dots: true,
-        infinite: testimonials.length > 1,
+        infinite: true,
         speed: 600,
-        slidesToShow: 3, // Default to desktop view
+        slidesToShow: 1, // Default to 1 for mobile
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 2500,
         pauseOnHover: true,
         arrows: true,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 768, // If width > 768 (using mobileFirst)
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
                 }
             },
             {
-                breakpoint: 768,
+                breakpoint: 1024, // If width > 1024
                 settings: {
-                    slidesToShow: 1, // Correctly show 1 slide on mobile
-                    slidesToScroll: 1,
-                    arrows: false,
-                    dots: true
+                    slidesToShow: 3,
                 }
             }
         ],
+        mobileFirst: true, // Use mobile-first breakpoints
         useTransform: true,
         accessibility: true,
         focusOnSelect: false
@@ -179,6 +174,11 @@ const Testimonials = () => {
                                                 <p className="testi-author-service">
                                                     {testimonial.service}
                                                 </p>
+                                            </div>
+
+                                            {/* Mobile CTA Link */}
+                                            <div className="testi-mobile-cta">
+                                                LEARN MORE &rarr;
                                             </div>
                                         </div>
                                     </div>
