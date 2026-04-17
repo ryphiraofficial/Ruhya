@@ -91,36 +91,34 @@ const Testimonials = () => {
         fetchTestimonials();
     }, []);
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const sliderSettings = {
         dots: true,
-        infinite: false, // Stopped infinite loop to make manual navigation clearer
+        infinite: isMobile,
         speed: 600,
-        slidesToShow: 3,
+        slidesToShow: isMobile ? 1 : 3,
         slidesToScroll: 1,
-        autoplay: false, // Removed auto scrolling as requested
-        pauseOnHover: true,
+        autoplay: isMobile,
+        autoplaySpeed: 2500,
+        pauseOnHover: !isMobile,
+        pauseOnFocus: !isMobile,
         arrows: true,
-        responsive: [
+        responsive: !isMobile ? [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
                 }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 2500,
-                    infinite: true,
-                    pauseOnHover: false,
-                    pauseOnFocus: false
-                }
             }
-        ],
+        ] : [],
         useTransform: true,
         accessibility: true,
         focusOnSelect: false
@@ -143,7 +141,7 @@ const Testimonials = () => {
 
                 <SectionReveal delay={0.3}>
                     <div className="testimonials-slider">
-                        <Slider key={testimonials.length} {...sliderSettings}>
+                        <Slider key={`${testimonials.length}-${isMobile}`} {...sliderSettings}>
                             {testimonials.map((testimonial) => (
                                 <div key={testimonial.id}>
                                     <div className="testimonial-card-wrapper">
