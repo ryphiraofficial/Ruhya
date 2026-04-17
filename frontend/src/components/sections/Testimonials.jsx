@@ -115,7 +115,9 @@ const Testimonials = () => {
                     slidesToScroll: 1,
                     autoplay: true,
                     autoplaySpeed: 2500,
-                    infinite: true
+                    infinite: true,
+                    pauseOnHover: false,
+                    pauseOnFocus: false
                 }
             }
         ],
