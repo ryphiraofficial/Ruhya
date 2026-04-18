@@ -5,6 +5,7 @@ import Therapy from './components/sections/Therapy';
 import Services from './components/sections/Services';
 import About from './components/sections/About';
 import Testimonials from './components/sections/Testimonials';
+import EmailSection from './components/sections/EmailSection';
 import Journey from './components/sections/Journey';
 import Footer from './components/sections/Footer';
 import WhatsAppSticky from './components/WhatsAppSticky';
@@ -45,6 +46,7 @@ function App() {
         <Services />
         <About />
         <Testimonials />
+        <EmailSection />
         <Journey />
         <WhatsAppSticky />
       </div>

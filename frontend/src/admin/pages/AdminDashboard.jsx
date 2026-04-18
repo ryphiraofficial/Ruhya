@@ -798,6 +798,15 @@ const AdminDashboard = () => {
                             />
                         </div>
                         <div className="cms-field">
+                            <label>Email ID</label>
+                            <input
+                                type="email"
+                                value={settingsForm.emailId}
+                                onChange={e => setSettingsForm({ ...settingsForm, emailId: e.target.value })}
+                                placeholder="contact@ruhya.com"
+                            />
+                        </div>
+                        <div className="cms-field">
                             <label>Instagram Link</label>
                             <input
                                 type="text"
