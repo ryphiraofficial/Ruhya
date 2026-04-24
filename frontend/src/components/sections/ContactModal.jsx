@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BASE_URL } from '../../config/api';
-import { useSettings } from '../../context/SettingsContext';
 import '../css/ContactModal.css';
 
 const ContactModal = ({ isOpen, onClose, serviceName }) => {
-    const settings = useSettings();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -35,23 +33,11 @@ const ContactModal = ({ isOpen, onClose, serviceName }) => {
             }
 
             setIsSubmitted(true);
-
-            // Redirect to WhatsApp
-            const whatsappMessage = `*New Enquiry from Ruhiya Website*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone || 'Not provided'}\n*Enquiry for:* ${serviceName || 'General Enquiry'}\n\n*Message:*\n${formData.message}`;
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            
-            // Clean the phone number (remove everything except digits)
-            const whatsappNumber = settings?.phoneNumber ? settings.phoneNumber.replace(/\D/g, '') : '919745580881';
-            
-            // Adding a small delay to let the user see the success message before redirecting
             setTimeout(() => {
-                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-                window.open(whatsappUrl, '_blank');
-                
                 setFormData({ name: '', email: '', phone: '', message: '' });
                 setIsSubmitted(false);
                 onClose();
-            }, 1500);
+            }, 2500);
         } catch (err) {
             setErrorMsg(err.message || 'Failed to send. Please try again.');
         } finally {
