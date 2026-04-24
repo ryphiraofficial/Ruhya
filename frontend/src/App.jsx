@@ -46,7 +46,7 @@ function App() {
         <Services />
         <About />
         <Testimonials />
-        <EmailSection />
+        {/* <EmailSection /> */}
         <Journey />
         <WhatsAppSticky />
       </div>
