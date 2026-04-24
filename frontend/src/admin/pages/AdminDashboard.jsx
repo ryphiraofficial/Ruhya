@@ -31,6 +31,65 @@ const SECTION_CONFIG = [
     { key: 'history', label: 'Change History', icon: History, description: 'View previous versions and audit trail' },
 ];
 
+const TestimonialAvatar = ({ imageUrl, name, size = "100%" }) => {
+    const [hasError, setHasError] = React.useState(false);
+    
+    const getImageSrc = (url) => {
+        if (!url) return null;
+        if (typeof url !== 'string' || url.includes('undefined') || url.includes('null')) return null;
+        if (url.startsWith('http') || url.startsWith('data:')) return url;
+        const backend = import.meta.env.VITE_API_URL?.replace('/api', '') || 'https://ruhya-backend.onrender.com';
+        const cleanUrl = url.startsWith('/') ? url : `/${url}`;
+        return `${backend}${cleanUrl}`;
+    };
+
+    const finalUrl = getImageSrc(imageUrl);
+
+    if (!finalUrl || hasError) {
+        return (
+            <div style={{ 
+                width: size, 
+                height: size, 
+                background: '#f5f5f5', 
+                borderRadius: '50%',
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden'
+            }}>
+                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '60%', height: '60%', color: '#8fa194' }}>
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+        );
+    }
+
+    return (
+        <div 
+            style={{ 
+                width: size, 
+                height: size, 
+                borderRadius: '50%',
+                backgroundImage: `url(${finalUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundColor: '#f5f5f5',
+                flexShrink: 0,
+                overflow: 'hidden'
+            }}
+            title={name}
+        >
+            <img 
+                src={finalUrl} 
+                alt="" 
+                style={{ display: 'none' }} 
+                onError={() => setHasError(true)} 
+            />
+        </div>
+    );
+};
+
 const AdminDashboard = () => {
     const navigate = useNavigate();
 
@@ -596,7 +655,7 @@ const AdminDashboard = () => {
                         <div key={t._id} className="cms-testimonial-card">
                             <div className="testi-card-top">
                                 <div className="testi-avatar-small">
-                                    <img src={getImageSrc(t.imageUrl)} alt={t.name} />
+                                    <TestimonialAvatar imageUrl={t.imageUrl} name={t.name} />
                                 </div>
                                 <div className="testi-meta">
                                     <h5>{t.name}</h5>
@@ -644,7 +703,7 @@ const AdminDashboard = () => {
                                     <div className="cms-field">
                                         <label>Client Photo</label>
                                         <div className="modal-img-upload square-avatar">
-                                            <img src={imgPreview || getImageSrc(testimonialForm.imageUrl)} alt="Client" />
+                                            <TestimonialAvatar imageUrl={imgPreview || testimonialForm.imageUrl} name="Preview" />
                                             <label className="cms-upload-label-overlay">
                                                 <Upload size={18} /> Select Photo
                                                 <input type="file" hidden onChange={handleFileChange} />

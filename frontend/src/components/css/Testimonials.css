@@ -239,4 +239,19 @@
         z-index: 20;
     }
 }
-
+
+.profile-placeholder-icon {
+    width: 100%;
+    height: 100%;
+    background: #f0f4f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #245e2f;
+}
+
+.profile-placeholder-icon svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.7;
+}

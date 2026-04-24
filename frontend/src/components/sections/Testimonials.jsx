@@ -70,12 +70,16 @@ const Testimonials = () => {
                 if (response.ok) {
                     const data = await response.json();
                     if (data && data.length > 0) {
+                        const defaultImages = [imgRectangle18, imgRectangle17, imgRectangle19];
                         const mappedTestimonials = data.map((testimonial, index) => ({
                             id: testimonial._id,
                             name: testimonial.name,
                             service: testimonial.service,
                             text: testimonial.text,
-                            image: testimonial.imageUrl ? getImageUrl(testimonial.imageUrl) : defaultTestimonials[index]?.image || defaultTestimonials[0].image
+                            hasImage: !!testimonial.imageUrl,
+                            image: testimonial.imageUrl 
+                                ? getImageUrl(testimonial.imageUrl) 
+                                : defaultImages[index % defaultImages.length]
                         }));
                         // Merge: New ones from DB + Default ones
                         setTestimonials([...mappedTestimonials, ...defaultTestimonials]);
@@ -101,14 +105,14 @@ const Testimonials = () => {
 
     const sliderSettings = {
         dots: true,
-        infinite: isMobile,
+        infinite: true,
         speed: 600,
         slidesToShow: isMobile ? 1 : 3,
         slidesToScroll: 1,
-        autoplay: isMobile,
-        autoplaySpeed: 2500,
-        pauseOnHover: !isMobile,
-        pauseOnFocus: !isMobile,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        pauseOnHover: true,
+        pauseOnFocus: true,
         arrows: true,
         responsive: !isMobile ? [
             {
@@ -150,10 +154,25 @@ const Testimonials = () => {
                                             <div className="testi-img-container">
                                                 <div className="testi-img-inner">
                                                     <div className="testi-avatar">
-                                                        <img
-                                                            src={testimonial.image}
-                                                            alt={testimonial.name}
-                                                        />
+                                                        {testimonial.hasImage ? (
+                                                            <img
+                                                                src={testimonial.image}
+                                                                alt={testimonial.name}
+                                                                onError={(e) => {
+                                                                    e.target.style.display = 'none';
+                                                                    const placeholder = e.target.parentNode.querySelector('.profile-placeholder-icon-fallback');
+                                                                    if (placeholder) placeholder.style.display = 'flex';
+                                                                }}
+                                                            />
+                                                        ) : null}
+                                                        
+                                                        {/* Always render the placeholder but hide it if image loads correctly */}
+                                                        <div className={`profile-placeholder-icon ${testimonial.hasImage ? 'profile-placeholder-icon-fallback' : ''}`} 
+                                                             style={testimonial.hasImage ? { display: 'none' } : {}}>
+                                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                                            </svg>
+                                                        </div>
                                                     </div>
                                                     {/* Quotation mark overlay */}
                                                     <div className="testi-quote-badge">

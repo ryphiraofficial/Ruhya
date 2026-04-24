@@ -1,13 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Plus, Edit2, Trash2, Image as ImageIcon, Save, Loader } from 'lucide-react';
+import { ArrowLeft, Plus, Edit2, Trash2, Image as ImageIcon, User, Save, Loader } from 'lucide-react';
 import api from '../utils/api';
 import '../css/ManageTestimonials.css';
-
 import { BASE_URL, getImageUrl } from '../../config/api';
+
+// Sub-component for handling image errors reliably
+// Sub-component for handling image errors reliably
+const TestimonialImage = ({ imageUrl, name }) => {
+    const [hasError, setHasError] = useState(false);
+
+    const finalUrl = imageUrl ? getImageUrl(imageUrl) : null;
+    
+    // Strict validation
+    const isValid = 
+        finalUrl && 
+        typeof finalUrl === 'string' && 
+        !finalUrl.includes('undefined') && 
+        !finalUrl.includes('null');
+
+    if (!isValid || hasError) {
+        return (
+            <div className="no-image-placeholder profile-placeholder-icon" 
+                 style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    background: '#f5f5f5', 
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '60px', height: '60px', color: '#8fa194' }}>
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+        );
+    }
+
+    return (
+        <div 
+            style={{ 
+                width: '100%', 
+                height: '100%', 
+                borderRadius: '50%',
+                backgroundImage: `url(${finalUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundColor: '#f5f5f5'
+            }}
+            title={name}
+        >
+            {/* Hidden loader to detect if the URL is actually broken */}
+            <img 
+                src={finalUrl} 
+                alt="" 
+                style={{ display: 'none' }} 
+                onError={() => setHasError(true)} 
+            />
+        </div>
+    );
+};
+
 const ManageTestimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
+    // ... rest of the existing state ...
+
     const [isLoading, setIsLoading] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
     const [editingTestimonial, setEditingTestimonial] = useState(null);
@@ -177,10 +236,14 @@ const ManageTestimonials = () => {
                         <div className="form-group">
                             <label>Client Image</label>
                             <div className="image-preview-container">
-                                {formData.imageUrl ? (
+                                {getImageUrl(formData.imageUrl) ? (
                                     <img src={getImageUrl(formData.imageUrl)} alt="Preview" className="image-preview" />
                                 ) : (
-                                    <div className="no-image">No image selected</div>
+                                    <div className="no-image profile-placeholder-icon" style={{ background: '#f5f5f5', borderRadius: '50%', width: '120px', height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '80px', height: '80px', color: '#8fa194' }}>
+                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                        </svg>
+                                    </div>
                                 )}
                                 <label className="upload-label" style={{ opacity: isUploading ? 0.7 : 1, cursor: isUploading ? 'not-allowed' : 'pointer' }}>
                                     {isUploading ? (
@@ -232,13 +295,7 @@ const ManageTestimonials = () => {
                                     transition={{ delay: index * 0.1 }}
                                 >
                                     <div className="item-image testimonial-image">
-                                        {testimonial.imageUrl ? (
-                                            <img src={getImageUrl(testimonial.imageUrl)} alt={testimonial.name} />
-                                        ) : (
-                                            <div className="no-image-placeholder">
-                                                <ImageIcon size={40} />
-                                            </div>
-                                        )}
+                                        <TestimonialImage imageUrl={testimonial.imageUrl} name={testimonial.name} />   
                                     </div>
                                     <div className="item-info">
                                         <h3>{testimonial.name}</h3>
