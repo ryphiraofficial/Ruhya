@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ContactModal from './ContactModal';
+import { useSettings } from '../../context/SettingsContext';
 import '../css/OfferingDetailModal.css';
 
 import imgRectangle4 from '../../assets/50890a46240fc48c66bf9036bd63303afee0193c.png';
@@ -79,6 +80,7 @@ const offerings = [
 ];
 
 const OfferingDetailModal = ({ isOpen, onClose, serviceData }) => {
+    const { phoneNumber } = useSettings();
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
     // Resolve which data to show
@@ -185,10 +187,25 @@ const OfferingDetailModal = ({ isOpen, onClose, serviceData }) => {
                                             <p className="offering-cta-subtitle">
                                                 Take the first step towards holistic healing and transformation.
                                             </p>
-                                            <motion.button
+                                            {/* Original Modal Trigger: */}
+                                            {/* <motion.button
                                                 whileHover={{ scale: 1.05 }}
                                                 whileTap={{ scale: 0.95 }}
                                                 onClick={() => setIsContactModalOpen(true)}
+                                                className="offering-cta-btn"
+                                            >
+                                                Connect With Us Today
+                                            </motion.button> */}
+
+                                            {/* New Direct WhatsApp Trigger: */}
+                                            <motion.button
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                onClick={() => {
+                                                    const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '919745580881';
+                                                    const message = encodeURIComponent(`Hello! I'd like to enquire about ${offering.title}.`);
+                                                    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+                                                }}
                                                 className="offering-cta-btn"
                                             >
                                                 Connect With Us Today
@@ -200,9 +217,9 @@ const OfferingDetailModal = ({ isOpen, onClose, serviceData }) => {
                         )}
                     </motion.div>
 
-                    {offering && (
+                    {/* {offering && (
                         <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} serviceName={offering.title} />
-                    )}
+                    )} */}
                 </motion.div>
             )}
         </AnimatePresence>

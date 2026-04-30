@@ -6,7 +6,7 @@ import ContactModal from './ContactModal';
 import '../css/EmailSection.css';
 
 const EmailSection = () => {
-    const { emailId } = useSettings();
+    const { emailId, phoneNumber } = useSettings();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
@@ -45,9 +45,22 @@ const EmailSection = () => {
                         </div>
 
                         <div className="email-actions">
-                            <button 
+                            {/* Original Modal Trigger: */}
+                            {/* <button 
                                 className="email-cta-btn"
                                 onClick={() => setIsModalOpen(true)}
+                            >
+                                Send a Message <ArrowRight size={18} />
+                            </button> */}
+
+                            {/* New Direct WhatsApp Trigger: */}
+                            <button 
+                                className="email-cta-btn"
+                                onClick={() => {
+                                    const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '919745580881';
+                                    const message = encodeURIComponent("Hello! I'd like to start a conversation with Ruh'ya.");
+                                    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+                                }}
                             >
                                 Send a Message <ArrowRight size={18} />
                             </button>
@@ -60,7 +73,7 @@ const EmailSection = () => {
                 <div className="email-decor-blob blob-2"></div>
             </div>
 
-            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            {/* <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
         </section>
     );
 };

@@ -16,7 +16,7 @@ const ContactModal = ({ isOpen, onClose, serviceName }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
 
-    const handleSubmit = async (e) => {
+    /* const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
         setErrorMsg('');
@@ -57,7 +57,7 @@ const ContactModal = ({ isOpen, onClose, serviceName }) => {
         } finally {
             setIsSubmitting(false);
         }
-    };
+    }; */
 
     const handleChange = (e) => {
         setFormData(prev => ({
@@ -101,7 +101,7 @@ const ContactModal = ({ isOpen, onClose, serviceName }) => {
                             </div>
                         )}
 
-                        <form onSubmit={handleSubmit} className="modal-form">
+                        {/* <form onSubmit={handleSubmit} className="modal-form">
                             <div className="form-group">
                                 <label>Your Name *</label>
                                 <input
@@ -156,7 +156,20 @@ const ContactModal = ({ isOpen, onClose, serviceName }) => {
                             {errorMsg && (
                                 <p className="modal-error-msg">{errorMsg}</p>
                             )}
-                        </form>
+                        </form> */}
+                        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                            <button 
+                                className="modal-submit-btn"
+                                onClick={() => {
+                                    const whatsappNumber = settings?.phoneNumber ? settings.phoneNumber.replace(/\D/g, '') : '919745580881';
+                                    const message = encodeURIComponent(`Hello! I'd like to connect with Ruh'ya${serviceName ? ` regarding ${serviceName}` : ''}.`);
+                                    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+                                    onClose();
+                                }}
+                            >
+                                Chat on WhatsApp
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div className="modal-success">

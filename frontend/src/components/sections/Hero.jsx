@@ -127,7 +127,20 @@ const Hero = () => {
                                 <span className="hero-phone-number">{phoneNumber}</span>
                             </motion.a>
                         </div>
-                        <button className="connect-btn" onClick={() => setIsModalOpen(true)}>Connect With Us</button>
+                        {/* Original Modal Trigger: */}
+                        {/* <button className="connect-btn" onClick={() => setIsModalOpen(true)}>Connect With Us</button> */}
+                        
+                        {/* New Direct WhatsApp Trigger: */}
+                        <button 
+                            className="connect-btn" 
+                            onClick={() => {
+                                const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '919745580881';
+                                const message = encodeURIComponent("Hello! I'd like to connect with Ruh'ya.");
+                                window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+                            }}
+                        >
+                            Connect With Us
+                        </button>
                     </div>
                 </motion.div>
 
@@ -141,7 +154,7 @@ const Hero = () => {
                     </div> */}
                 </motion.div>
             </motion.div>
-            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            {/* <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
         </section>
     );
 };
