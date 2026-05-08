@@ -222,3 +222,52 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+/* ========================================
+   MOBILE RESPONSIVE — Edit Section
+   ======================================== */
+
+@media (max-width: 768px) {
+    .edit-section-page {
+        padding: 24px 14px;
+    }
+
+    .edit-form {
+        padding: 24px 16px;
+        border-radius: 20px;
+    }
+
+    .edit-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-actions {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .save-btn,
+    .reset-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .edit-section-page {
+        padding: 16px 10px;
+    }
+
+    .edit-form {
+        padding: 18px 12px;
+        border-radius: 16px;
+    }
+
+    .edit-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* prevent iOS zoom */
+    }
+}

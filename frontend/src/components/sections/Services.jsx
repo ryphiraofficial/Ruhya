@@ -61,51 +61,71 @@ const Services = () => {
     const [selectedService, setSelectedService] = useState(null);
 
     useEffect(() => {
-        const fetchServices = async () => {
+        let cancelled = false;
+
+        const fetchServicesWithRetry = async (attempt = 1, maxAttempts = 4) => {
             try {
                 const response = await fetch(`${BASE_URL}/api/services`);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data && data.length > 0) {
-                        const mappedServices = data.map((service) => {
-                            // Find fallback image by matching keywords in title
-                            const titleLower = service.title.toLowerCase();
-                            let fallbackImage = defaultServices[0].image;
-                            for (const [keyword, img] of Object.entries(imageFallbackMap)) {
-                                if (titleLower.includes(keyword)) {
-                                    fallbackImage = img;
-                                    break;
-                                }
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const data = await response.json();
+                if (cancelled) return;
+
+                if (data && data.length > 0) {
+                    const mappedServices = data.map((service) => {
+                        // Find fallback image by matching keywords in title
+                        const titleLower = service.title.toLowerCase();
+                        let fallbackImage = defaultServices[0].image;
+                        for (const [keyword, img] of Object.entries(imageFallbackMap)) {
+                            if (titleLower.includes(keyword)) {
+                                fallbackImage = img;
+                                break;
                             }
+                        }
 
-                            return {
-                                id: service._id,
-                                title: service.title,
-                                subtitle: service.subtitle,
-                                description: service.description,
-                                fallbackImage: fallbackImage,
-                                image: service.imageUrl ? getImageUrl(service.imageUrl) : fallbackImage
-                            };
-                        });
+                        return {
+                            id: service._id,
+                            title: service.title,
+                            subtitle: service.subtitle,
+                            description: service.description,
+                            fallbackImage: fallbackImage,
+                            image: service.imageUrl ? getImageUrl(service.imageUrl) : fallbackImage
+                        };
+                    });
 
-                        // Sort by desired order
-                        mappedServices.sort((a, b) => {
-                            const indexA = desiredOrder.findIndex(t => a.title.toLowerCase().includes(t.toLowerCase().split(' ')[0].toLowerCase()));
-                            const indexB = desiredOrder.findIndex(t => b.title.toLowerCase().includes(t.toLowerCase().split(' ')[0].toLowerCase()));
-                            return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB);
-                        });
+                    // Sort by desired order
+                    mappedServices.sort((a, b) => {
+                        const indexA = desiredOrder.findIndex(t => a.title.toLowerCase().includes(t.toLowerCase().split(' ')[0].toLowerCase()));
+                        const indexB = desiredOrder.findIndex(t => b.title.toLowerCase().includes(t.toLowerCase().split(' ')[0].toLowerCase()));
+                        return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB);
+                    });
 
-                        setServices(mappedServices);
-                    }
+                    setServices(mappedServices);
                 }
+
+                if (!cancelled) setIsLoading(false);
+
             } catch (err) {
-                console.error('Error fetching services:', err);
-            } finally {
-                setIsLoading(false);
+                console.error(`Services fetch attempt ${attempt} failed:`, err);
+
+                if (!cancelled && attempt < maxAttempts) {
+                    // Retry with increasing delay: 3s, 6s, 9s
+                    // This handles Render's cold-start delay (~15-30s)
+                    const delay = attempt * 3000;
+                    console.log(`Retrying in ${delay / 1000}s... (attempt ${attempt + 1}/${maxAttempts})`);
+                    setTimeout(() => {
+                        if (!cancelled) fetchServicesWithRetry(attempt + 1, maxAttempts);
+                    }, delay);
+                } else {
+                    // All retries exhausted — keep showing default local images
+                    if (!cancelled) setIsLoading(false);
+                }
             }
         };
 
-        fetchServices();
+        fetchServicesWithRetry();
+
+        return () => { cancelled = true; };
     }, []);
 
     const handleOpenModal = (service) => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, Reorder } from 'framer-motion';
 import {
-    LogOut, Save, Upload, Check, RotateCcw, X, Plus,
+    LogOut, Save, Upload, Check, RotateCcw, X, Plus, Menu,
     Layout, Type, MessageSquare, History, Settings, Heart,
     ChevronRight, Eye, Edit3, Image as ImageIcon, Trash2, Clock, ArrowUp, ArrowDown
 } from 'lucide-react';
@@ -134,6 +134,7 @@ const AdminDashboard = () => {
     const [editingTherapy, setEditingTherapy] = useState(false);
     const [editingNeed, setEditingNeed] = useState(null);
     const [selectedRevision, setSelectedRevision] = useState(null);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // Form states
     const [aboutForm, setAboutForm] = useState({ title: '', subtitle: '', body: '', imageUrl: '' });
@@ -909,14 +910,21 @@ const AdminDashboard = () => {
 
     return (
         <div className="cms-dashboard">
-            <aside className="cms-sidebar">
+            {isMobileMenuOpen && (
+                <div className="mobile-sidebar-overlay" onClick={() => setIsMobileMenuOpen(false)} />
+            )}
+
+            <aside className={`cms-sidebar ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
                 <div className="cms-brand">
                     <h2>Ruh'ya Admin</h2>
                     <span>CMS Panel</span>
                 </div>
+                <button className="mobile-close-btn" onClick={() => setIsMobileMenuOpen(false)}>
+                    <X size={20} />
+                </button>
                 <nav className="cms-nav">
                     {SECTION_CONFIG.map(s => (
-                        <button key={s.key} className={`cms-nav-link ${activeSection === s.key ? 'active' : ''}`} onClick={() => { setActiveSection(s.key); clearStates(); }}>
+                        <button key={s.key} className={`cms-nav-link ${activeSection === s.key ? 'active' : ''}`} onClick={() => { setActiveSection(s.key); clearStates(); setIsMobileMenuOpen(false); }}>
                             <s.icon size={18} />
                             <div className="link-info">
                                 <strong>{s.label}</strong>
@@ -931,9 +939,14 @@ const AdminDashboard = () => {
 
             <main className="cms-main">
                 <header className="cms-header">
-                    <div className="cms-header-title">
-                        <h1>{SECTION_CONFIG.find(s => s.key === activeSection)?.label}</h1>
-                        <p>{SECTION_CONFIG.find(s => s.key === activeSection)?.description}</p>
+                    <div className="cms-header-left">
+                        <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(true)}>
+                            <Menu size={24} />
+                        </button>
+                        <div className="cms-header-title">
+                            <h1>{SECTION_CONFIG.find(s => s.key === activeSection)?.label}</h1>
+                            <p>{SECTION_CONFIG.find(s => s.key === activeSection)?.description}</p>
+                        </div>
                     </div>
                     <a href="/" target="_blank" className="view-live-link"><Eye size={16} /> Go to Website</a>
                 </header>

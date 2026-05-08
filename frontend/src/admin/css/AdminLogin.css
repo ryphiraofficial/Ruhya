@@ -104,3 +104,27 @@
     cursor: not-allowed;
     transform: none;
 }
+
+/* ========================================
+   MOBILE RESPONSIVE — Admin Login
+   ======================================== */
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    .login-logo {
+        font-size: 2.5rem;
+    }
+
+    .form-group input {
+        padding: 12px 16px;
+        font-size: 16px; /* prevent iOS zoom */
+    }
+
+    .login-btn {
+        padding: 14px;
+    }
+}

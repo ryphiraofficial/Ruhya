@@ -1104,3 +1104,417 @@
     letter-spacing: -1px;
 }
 
+/* ========================================
+   MOBILE RESPONSIVE — Admin Dashboard
+   Breakpoints: 768px (tablet), 480px (phone)
+   Zero changes to logic or core design
+   ======================================== */
+
+.mobile-menu-btn,
+.mobile-sidebar-overlay,
+.mobile-close-btn {
+    display: none;
+}
+@media (max-width: 768px) {
+    .cms-header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: #245e2f;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-left: -8px;
+    }
+
+    .mobile-menu-btn:hover {
+        background: rgba(36, 94, 47, 0.05);
+    }
+
+    /* Off-canvas Sidebar Overlay */
+    .mobile-sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(2px);
+        z-index: 199;
+    }
+
+    /* Layout: Off-canvas sidebar */
+    .cms-dashboard {
+        display: block; /* Remove flex on mobile to stack header/body if needed, but cms-main will follow flow */
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .cms-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px;
+        background: #fff;
+        z-index: 200;
+        flex-direction: column;
+        padding: 24px 20px;
+        border-right: 1px solid #eef2f1;
+        border-bottom: none;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+    }
+
+    .cms-sidebar.mobile-open {
+        transform: translateX(0);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    .mobile-close-btn {
+        position: absolute;
+        top: 24px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: #8fa194;
+        cursor: pointer;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .mobile-close-btn:hover {
+        background: #f5f8f6;
+        color: #d32f2f;
+    }
+
+    .cms-brand {
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .cms-brand span {
+        display: block;
+    }
+
+    .cms-nav {
+        flex-direction: column;
+        overflow-x: visible;
+        gap: 8px;
+        padding: 0;
+    }
+
+    .cms-nav-link {
+        flex-direction: row;
+        padding: 14px 16px;
+        border-radius: 12px;
+        text-align: left;
+        min-width: auto;
+        justify-content: flex-start;
+    }
+
+    .cms-nav-link.active::before {
+        left: 0;
+        top: 10px;
+        bottom: 10px;
+        width: 4px;
+        height: auto;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .cms-nav-link .link-info {
+        display: flex;
+    }
+
+    .cms-nav-link .arrow {
+        display: block;
+        margin-left: auto;
+    }
+
+    .cms-logout {
+        margin-top: auto;
+        padding: 14px 16px;
+        font-size: 0.95rem;
+    }
+
+    /* Main content */
+    .cms-main {
+        padding: 20px 14px;
+        overflow-y: visible;
+        max-height: none;
+    }
+
+    .cms-header {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+        align-items: flex-start;
+    }
+
+    .cms-header-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .cms-header-title p {
+        font-size: 0.9rem;
+    }
+
+    .view-live-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cms-body {
+        padding: 20px 14px;
+        border-radius: 20px;
+    }
+
+    /* About section */
+    .live-about-content {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .live-about-image .live-img-wrapper {
+        box-shadow: 12px 12px 0 #e8f5e9;
+        border-radius: 24px;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .live-h2 {
+        font-size: 28px;
+    }
+
+    .live-h3 {
+        font-size: 20px;
+    }
+
+    .cms-form-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .cms-image-upload-about {
+        aspect-ratio: 4/3;
+        max-width: 100%;
+    }
+
+    /* Services & Testimonials grids */
+    .admin-services-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .cms-testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* Modals — slide up from bottom */
+    .cms-modal-overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .cms-modal {
+        border-radius: 28px 28px 0 0;
+        padding: 28px 18px 36px;
+        max-width: 100%;
+        margin-bottom: 0;
+        max-height: 92vh;
+        overflow-y: auto;
+    }
+
+    .detail-modal {
+        max-width: 100%;
+    }
+
+    .modal-header h4 {
+        font-size: 1.2rem;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .cms-save-btn,
+    .cms-cancel-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Settings */
+    .settings-card {
+        padding: 20px 16px;
+        border-radius: 20px;
+    }
+
+    .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .settings-actions {
+        justify-content: stretch;
+    }
+
+    .settings-actions .cms-save-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* History timeline */
+    .admin-history-view {
+        padding: 4px;
+    }
+
+    .cms-history-timeline {
+        padding-left: 20px;
+    }
+
+    .history-dot {
+        left: -20px;
+    }
+
+    .history-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .history-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .revision-detail-img {
+        width: 100%;
+        height: auto;
+        max-width: 180px;
+    }
+
+    .preview-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Therapy needs */
+    .cms-need-item {
+        padding: 12px 14px;
+    }
+
+    .cms-need-item:hover {
+        transform: none;
+    }
+
+    .live-alike-therapy {
+        padding: 18px;
+    }
+
+    .live-alike-therapy h4 {
+        font-size: 1.4rem;
+    }
+
+    /* Inputs — prevent iOS auto-zoom */
+    .cms-field input,
+    .cms-field textarea {
+        font-size: 16px;
+        padding: 12px 14px;
+    }
+
+    .cms-add-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-with-action {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .cms-sidebar {
+        padding: 10px 12px;
+    }
+
+    .cms-brand h2 {
+        font-size: 1.2rem;
+    }
+
+    .cms-nav-link {
+        padding: 6px 10px;
+        min-width: 50px;
+    }
+
+    .cms-main {
+        padding: 14px 10px;
+    }
+
+    .cms-body {
+        padding: 14px 10px;
+        border-radius: 16px;
+    }
+
+    .cms-header-title h1 {
+        font-size: 1.25rem;
+    }
+
+    .live-h2 {
+        font-size: 22px;
+    }
+
+    .testi-card-top {
+        gap: 10px;
+    }
+
+    .testi-avatar-small {
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
+    }
+
+    .testi-meta h5 {
+        font-size: 0.9rem;
+    }
+
+    .icon-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cms-modal {
+        padding: 20px 14px 30px;
+    }
+
+    .cms-inline-edit-form {
+        padding: 14px;
+    }
+
+    .need-text {
+        font-size: 0.9rem;
+    }
+
+    .drag-icon {
+        font-size: 1rem;
+    }
+}
+

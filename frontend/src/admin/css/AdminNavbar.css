@@ -63,3 +63,42 @@
 .admin-logout-btn:hover {
     background: #fff1f1;
 }
+
+/* ========================================
+   MOBILE RESPONSIVE — Admin Navbar
+   ======================================== */
+
+@media (max-width: 768px) {
+    .admin-nav-container {
+        padding: 0 14px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .admin-brand {
+        font-size: 1.4rem;
+    }
+
+    .admin-nav-links {
+        gap: 12px;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-brand {
+        font-size: 1.2rem;
+    }
+
+    .admin-logout-btn span {
+        display: none;
+    }
+
+    .admin-logout-btn {
+        padding: 8px;
+        border-radius: 8px;
+    }
+}

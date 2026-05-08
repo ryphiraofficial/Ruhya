@@ -360,3 +360,77 @@
     align-items: center;
     justify-content: center;
 }
+
+/* ========================================
+   MOBILE RESPONSIVE — Manage Testimonials
+   ======================================== */
+
+@media (max-width: 768px) {
+    .manage-page {
+        padding: 20px 16px;
+    }
+
+    .manage-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .edit-form-container {
+        padding: 24px 16px;
+        border-radius: 18px;
+    }
+
+    .items-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .cancel-btn,
+    .save-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .add-new-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .image-preview,
+    .no-image {
+        width: 160px;
+        height: 160px;
+    }
+
+    .empty-state {
+        padding: 40px 20px;
+    }
+
+    .item-actions {
+        flex-direction: row; /* keep side by side — enough space */
+    }
+}
+
+@media (max-width: 480px) {
+    .manage-page {
+        padding: 14px 10px;
+    }
+
+    .edit-form-container {
+        padding: 18px 12px;
+        border-radius: 14px;
+    }
+
+    .manage-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .testimonial-image {
+        width: 90px;
+        height: 90px;
+    }
+}
