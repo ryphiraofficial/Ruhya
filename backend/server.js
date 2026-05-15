@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 
 const authRoutes = require('./routes/authRoutes');
@@ -16,8 +17,61 @@ const therapyNeedRoutes = require('./routes/therapyNeedRoutes');
 
 const app = express();
 
-app.use(cors());
+// CORS configuration — strict origin whitelist for Safari/Mac cross-origin support
+const allowedOrigins = [
+  'https://localhost:5173',
+  'https://localhost:5174',
+  'https://localhost:3000',
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:3000',
+  'https://ruhya.onrender.com',
+  'https://www.ruhya.onrender.com',
+  'https://ruhya.com',
+  'https://www.ruhya.com',
+  'https://ruhya-frontend.onrender.com',
+  'https://www.ruhya-frontend.onrender.com',
+  // Add your exact frontend domain here
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, Postman, server-to-server)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.warn('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+}));
+
+// Handle preflight OPTIONS requests explicitly for Safari
+app.options('*', cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+}));
+
 app.use(express.json());
+app.use(cookieParser());
+
+// Health Check Endpoint for UptimeRobot
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/content', contentRoutes);
