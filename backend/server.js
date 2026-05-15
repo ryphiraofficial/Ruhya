@@ -17,7 +17,7 @@ const therapyNeedRoutes = require('./routes/therapyNeedRoutes');
 
 const app = express();
 
-// CORS configuration — strict origin whitelist for Safari/Mac cross-origin support
+
 const allowedOrigins = [
   'https://localhost:5173',
   'https://localhost:5174',

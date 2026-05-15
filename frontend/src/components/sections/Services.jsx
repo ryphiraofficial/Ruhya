@@ -153,11 +153,15 @@ const Services = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: index * 0.2 }}
-                        onClick={() => handleOpenModal(service)}
-                        style={{ cursor: 'pointer' }}
+                    // onClick={() => handleOpenModal(service)}
+                    // style={{ cursor: 'pointer' }}
+                    // tabIndex="0" 
                     >
                         <div className="oval-image-container">
                             <img src={service.image} alt={service.title} onError={(e) => { if (service.fallbackImage) e.target.src = service.fallbackImage; }} />
+                            <div className="service-overlay">
+                                <p className="hover-description">{service.description}</p>
+                            </div>
                         </div>
                         <h3>{service.title}</h3>
                         <p>{service.subtitle}</p>
@@ -165,11 +169,11 @@ const Services = () => {
                 ))}
             </div>
 
-            <OfferingDetailModal
+            {/* <OfferingDetailModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 serviceData={selectedService}
-            />
+            /> */}
         </section >
     );
 };
