@@ -31,6 +31,8 @@ const allowedOrigins = [
   'https://www.ruhya.com',
   'https://ruhya-frontend.onrender.com',
   'https://www.ruhya-frontend.onrender.com',
+  'https://www.ruhyasoul.com',
+  'https://ruhyasoul.com',
   // Add your exact frontend domain here
 ];
 
