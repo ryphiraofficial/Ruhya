@@ -160,7 +160,7 @@ const Services = () => {
                         <div className="oval-image-container">
                             <img src={service.image} alt={service.title} onError={(e) => { if (service.fallbackImage) e.target.src = service.fallbackImage; }} />
                             <div className="service-overlay">
-                                <p className="hover-description">{service.description}</p>
+                                <span className="hover-description">{service.description}</span>
                             </div>
                         </div>
                         <h3>{service.title}</h3>
