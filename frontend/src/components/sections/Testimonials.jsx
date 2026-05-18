@@ -103,23 +103,45 @@ const Testimonials = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const [currentSlide, setCurrentSlide] = useState(0);
+
     const sliderSettings = {
         dots: true,
         infinite: true,
         speed: 600,
         slidesToShow: isMobile ? 1 : 3,
-        slidesToScroll: 1,
+        slidesToScroll: isMobile ? 1 : 3,
         autoplay: true,
         autoplaySpeed: 3000,
         pauseOnHover: true,
         pauseOnFocus: true,
         arrows: true,
+        beforeChange: (current, next) => setCurrentSlide(next),
+        appendDots: dots => {
+            // Find active dot index
+            let activeIndex = dots.findIndex(dot => dot.props.className && dot.props.className.includes('slick-active'));
+            if (activeIndex === -1) activeIndex = 0;
+
+            // We only want to restrict dots on mobile to keep it clean (e.g. max 3 dots)
+            if (isMobile && dots.length > 3) {
+                let start = activeIndex - 1;
+                // Boundary checks
+                if (start < 0) start = 0;
+                if (start + 3 > dots.length) start = Math.max(0, dots.length - 3);
+                
+                const visibleDots = dots.slice(start, start + 3);
+                return <ul style={{ margin: "0px" }}> {visibleDots} </ul>;
+            }
+
+            // On desktop or if 3 or fewer dots, show normally
+            return <ul style={{ margin: "0px" }}> {dots} </ul>;
+        },
         responsive: !isMobile ? [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                 }
             }
         ] : [],

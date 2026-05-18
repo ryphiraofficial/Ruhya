@@ -73,7 +73,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.266);
+    background: rgba(43, 101, 52, 0.9); /* Leaf green background */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +81,8 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: all 0.4s ease;
+    transform: translateY(100%); /* Start from below */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(2px);
     border-radius: inherit;
 }
@@ -89,13 +90,13 @@
 .hover-description {
     font-family: var(--font-main);
     font-size: 0.9rem;
-    color: #000000;
+    color: #ffffff; /* White text */
     line-height: 1.4;
     text-align: center;
     margin: 0 !important;
     opacity: 1 !important;
     font-style: normal !important;
-    font-weight: 550; /* Solid bold for "darker" look */
+    font-weight: 500; /* Regular weight for white text */
     max-width: 85%;
     display: block;
 }
@@ -104,6 +105,7 @@
     opacity: 1; /* Fully opaque container to keep text dark */
     visibility: visible;
     pointer-events: auto;
+    transform: translateY(0); /* Slide up into place */
 }
 
 .service-card:hover .oval-image-container {
@@ -135,6 +137,7 @@
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
+        transform: translateY(0);
     }
 
     .service-card:focus .oval-image-container,
