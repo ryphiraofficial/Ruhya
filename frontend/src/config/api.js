@@ -11,7 +11,7 @@ export const BASE_URL =
   import.meta.env.VITE_API_URL?.replace('/api', '') ||
   (import.meta.env.DEV
     ? 'http://localhost:5000'
-    : 'https://ruhya-backend.onrender.com');
+    : 'https://api.ruhyasoul.com');
 
 // 🔹 API URL (for axios calls)
 export const API_URL = `${BASE_URL}/api`;
