@@ -4,7 +4,7 @@ import { motion, AnimatePresence, Reorder } from 'framer-motion';
 import {
     LogOut, Save, Upload, Check, RotateCcw, X, Plus, Menu,
     Layout, Type, MessageSquare, History, Settings, Heart,
-    ChevronRight, Eye, Edit3, Image as ImageIcon, Trash2, Clock, ArrowUp, ArrowDown
+    ChevronRight, Eye, Edit3, Image as ImageIcon, Trash2, Clock, ArrowUp, ArrowDown, Loader
 } from 'lucide-react';
 import api from '../utils/api';
 import { SECTION_DEFAULTS } from '../utils/defaults';
@@ -522,7 +522,8 @@ const AdminDashboard = () => {
                             <div className="cms-form-actions">
                                 <button className="cms-cancel-btn" onClick={() => setEditingAbout(false)}>Cancel</button>
                                 <button className="cms-save-btn" onClick={saveAbout} disabled={isSaving}>
-                                    <Save size={18} /> {isSaving ? 'Saving...' : 'Update Section'}
+                                    {isSaving ? <Loader size={18} className="spin" /> : <Save size={18} />} 
+                                    {isSaving ? 'Saving...' : 'Update Section'}
                                 </button>
                             </div>
                         </motion.div>
@@ -622,7 +623,8 @@ const AdminDashboard = () => {
                                 <div className="modal-footer">
                                     <button className="cms-cancel-btn" onClick={clearStates}>Cancel</button>
                                     <button className="cms-save-btn" onClick={saveService} disabled={isSaving}>
-                                        <Save size={18} /> Save Changes
+                                        {isSaving ? <Loader size={18} className="spin" /> : <Save size={18} />} 
+                                        {isSaving ? 'Saving...' : 'Save Changes'}
                                     </button>
                                 </div>
                             </div>
@@ -715,7 +717,8 @@ const AdminDashboard = () => {
                                 <div className="modal-footer">
                                     <button className="cms-cancel-btn" onClick={clearStates}>Cancel</button>
                                     <button className="cms-save-btn" onClick={handleSaveTestimonial} disabled={isSaving}>
-                                        <Save size={18} /> {editingTestimonial ? 'Update' : 'Add Testimonial'}
+                                        {isSaving ? <Loader size={18} className="spin" /> : <Save size={18} />} 
+                                        {isSaving ? 'Saving...' : (editingTestimonial ? 'Update' : 'Add Testimonial')}
                                     </button>
                                 </div>
                             </div>
@@ -898,7 +901,8 @@ const AdminDashboard = () => {
                                 setIsSaving(false);
                             }
                         }} disabled={isSaving}>
-                            <Save size={18} /> {isSaving ? 'Updating...' : 'Save Site Settings'}
+                            {isSaving ? <Loader size={18} className="spin" /> : <Save size={18} />} 
+                            {isSaving ? 'Updating...' : 'Save Site Settings'}
                         </button>
                     </div>
                 </div>
@@ -981,7 +985,8 @@ const AdminDashboard = () => {
                                     <div className="cms-form-actions">
                                         <button className="cms-cancel-btn" onClick={() => setEditingTherapy(false)}>Cancel</button>
                                         <button className="cms-save-btn" onClick={saveTherapyContent} disabled={isSaving}>
-                                            <Save size={18} /> {isSaving ? 'Saving...' : 'Update Section'}
+                                            {isSaving ? <Loader size={18} className="spin" /> : <Save size={18} />} 
+                                            {isSaving ? 'Saving...' : 'Update Section'}
                                         </button>
                                     </div>
                                 </div>
@@ -1010,7 +1015,8 @@ const AdminDashboard = () => {
                                     <div className="form-actions">
                                         <button className="cms-cancel-btn" onClick={() => { setEditingNeed(null); setNeedForm({text: ''}); }}>Cancel</button>
                                         <button className="cms-save-btn" onClick={saveNeed} disabled={isSaving}>
-                                            <Save size={16} /> Save
+                                            {isSaving ? <Loader size={16} className="spin" /> : <Save size={16} />} 
+                                            {isSaving ? 'Saving...' : 'Save'}
                                         </button>
                                     </div>
                                 </div>

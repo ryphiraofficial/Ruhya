@@ -41,7 +41,7 @@ const ContactModal = ({ isOpen, onClose, serviceName }) => {
             const encodedMessage = encodeURIComponent(whatsappMessage);
             
             // Clean the phone number (remove everything except digits)
-            const whatsappNumber = settings?.phoneNumber ? settings.phoneNumber.replace(/\D/g, '') : '919745580881';
+            const whatsappNumber = settings?.phoneNumber ? settings.phoneNumber.replace(/\D/g, '') : '971558967123';
             
             // Adding a small delay to let the user see the success message before redirecting
             setTimeout(() => {
@@ -161,7 +161,7 @@ const ContactModal = ({ isOpen, onClose, serviceName }) => {
                             <button 
                                 className="modal-submit-btn"
                                 onClick={() => {
-                                    const whatsappNumber = settings?.phoneNumber ? settings.phoneNumber.replace(/\D/g, '') : '919745580881';
+                                    const whatsappNumber = settings?.phoneNumber ? settings.phoneNumber.replace(/\D/g, '') : '971558967123';
                                     const message = encodeURIComponent(`Hello! I'd like to connect with Ruh'ya${serviceName ? ` regarding ${serviceName}` : ''}.`);
                                     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
                                     onClose();

@@ -5,10 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import AdminLogin from './admin/pages/AdminLogin.jsx'
 import AdminDashboard from './admin/pages/AdminDashboard.jsx'
-import EditSection from './admin/pages/EditSection.jsx'
 import PrivateRoute from './admin/components/PrivateRoute.jsx'
-import ManageServices from './admin/pages/ManageServices.jsx'
-import ManageTestimonials from './admin/pages/ManageTestimonials.jsx'
 import { Toaster } from 'react-hot-toast'
 import { SettingsProvider } from './context/SettingsContext'
 
@@ -24,21 +21,6 @@ createRoot(document.getElementById('root')).render(
           <Route path="/admin/dashboard" element={
             <PrivateRoute>
               <AdminDashboard />
-            </PrivateRoute>
-          } />
-          <Route path="/admin/edit/:sectionName" element={
-            <PrivateRoute>
-              <EditSection />
-            </PrivateRoute>
-          } />
-          <Route path="/admin/services" element={
-            <PrivateRoute>
-              <ManageServices />
-            </PrivateRoute>
-          } />
-          <Route path="/admin/testimonials" element={
-            <PrivateRoute>
-              <ManageTestimonials />
             </PrivateRoute>
           } />
         </Routes>

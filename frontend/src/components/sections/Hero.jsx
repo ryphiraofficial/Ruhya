@@ -134,7 +134,7 @@ const Hero = () => {
                         <button 
                             className="connect-btn" 
                             onClick={() => {
-                                const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '919745580881';
+                                const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '971558967123';
                                 const message = encodeURIComponent("Hello! I'd like to connect with Ruh'ya.");
                                 window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
                             }}

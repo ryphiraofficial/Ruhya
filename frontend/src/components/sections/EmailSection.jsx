@@ -57,7 +57,7 @@ const EmailSection = () => {
                             <button 
                                 className="email-cta-btn"
                                 onClick={() => {
-                                    const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '919745580881';
+                                    const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '971558967123';
                                     const message = encodeURIComponent("Hello! I'd like to start a conversation with Ruh'ya.");
                                     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
                                 }}

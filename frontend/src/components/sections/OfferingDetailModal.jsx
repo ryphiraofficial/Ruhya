@@ -202,7 +202,7 @@ const OfferingDetailModal = ({ isOpen, onClose, serviceData }) => {
                                                 whileHover={{ scale: 1.05 }}
                                                 whileTap={{ scale: 0.95 }}
                                                 onClick={() => {
-                                                    const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '919745580881';
+                                                    const whatsappNumber = phoneNumber ? phoneNumber.replace(/\D/g, '') : '971558967123';
                                                     const message = encodeURIComponent(`Hello! I'd like to enquire about ${offering.title}.`);
                                                     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
                                                 }}
